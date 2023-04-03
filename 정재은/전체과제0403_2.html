@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Apple ID 생성</title>
+        <link href="css.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/5286d2d6db.js" crossorigin="anonymous"></script>
+
+        
+    </head>
+<body>
+    <section>
+    <ul>
+        <li><button><i class="fa-brands fa-apple"></i></button></li>
+ <li><input type="button" value="스토어"></li>
+<li><input type="button" value="Mac"></li>
+<li><input type="button" value="iPad"></li>
+<li><input type="button" value="iPhone"></li>
+<li><input type="button" value="Watch"></li>
+<li><input type="button" value="AirPods"></li>
+<li><input type="button" value="악세사리"></li>
+<li><input type="button" value="고객지원"></li>
+<li><button><i class="fa-solid fa-magnifying-glass"></i></button></li>
+</ul>
+<h1>Apple ID</h1>
+<p>로그인</p>
+<p>Apple ID 생성</p>
+<p>FAQ</p>
+<h1>Apple ID 생성</h1>
+<p>하나의 Apple ID로 모든 Apple 서비스를 이용할 수 있습니다.</p>
+<Form action="http://localhost/method.php" method="post">
+<input type="text" id="firstname" placeholder="성" required> <br> 
+<input type="text" id="lastname" placeholder="이름" required> <br>
+<select> 
+	<option value=“korea“>대한민국 +82</option> 
+</select><br>
+<input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" placeholder="전화번호" required><br>
+<input type="date" required><br>
+<input type="email" placeholder="name@example.com" required><br>
+<input type="password" placeholder="암호" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*?[#?!@$%^&*-])[A-Za-z\d$@$!%*#?&].{8,16}$" required><br>
+번호 확인 방법 <label for="radio1"><input type="radio" name="radio" id="radio1" value="letter" required>문자 메시지</label>
+<label for="radio2"><input type="radio" name="radio" id="radio2" value="voicd">음성 메시지</label><br>
+<label for="checkbox1"><input type="checkbox" name="checkbox1" id="checkbox1" value="adv">광고수신동의</label><br>
+<label for="checkbox2"><input type="checkbox" name="checkbox2" id="checkbox2" value="infor" required>개인정보수집동의</label><br>
+<input type="submit" value="가입하기">
+</Form>   <br>
+</section>
+<footer>
+    <a href="전체과제0403.html">이전페이지</a>
+</footer>
+</body>
+</html>

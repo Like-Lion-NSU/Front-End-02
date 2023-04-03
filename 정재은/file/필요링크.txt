@@ -1,0 +1,19 @@
+1. 로고
+fontawesome 주소 : https://fontawesome.com/
+- 아래 코드들은 예시입니다. 사용법은 서칭해주세요! 정말 모르겠다면 멘토분들을 이용해주세요!
+
+애플로고: <i class="fa-brands fa-apple"></i>
+돋보기 로고: <i class="fa-solid fa-magnifying-glass"></i>
+
+2. form action 주소
+http://localhost/method.php
+
+3. 아이폰 프로 14 이미지주소
+https://www.apple.com/v/iphone/home/bn/images/chapternav/iphone_14_pro_light__dfhcc00ur2oi_large.svg
+(나머지 이미지들은 이미지 파일안에 있습니다!)
+
+4. 아이폰프로 14, 에어팟, 액세서리, 아이폰 쇼핑하기 등 링크
+아이폰 프로 14: https://www.apple.com/kr/iphone-14-pro/
+에어팟 : https://www.apple.com/kr/airpods/
+액세서리 : https://www.apple.com/kr/shop/iphone/accessories
+아이폰 쇼핑하기 : https://www.apple.com/kr/shop/buy-iphone
