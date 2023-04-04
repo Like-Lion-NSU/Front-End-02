@@ -123,7 +123,7 @@ margin :바깥 여백
 * grid-template-columns: 150px 1fr; &rarr; 첫번째 div nav를 150px만큼 지정, 두번째 div article을 나머지 크기만큼 지정
 * grid-template-columns: 2fr 1fr; &rarr; nav와 article의 비율을 전체에서 2:1 비율
 
-웹브라우저 기술 채택 지원 비
+웹브라우저 기술 채택 지원 비율
 [CanIuse](https://caniuse.com/)
 
 ---
