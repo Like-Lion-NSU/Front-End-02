@@ -189,12 +189,12 @@ str()
     }
         for(let a = 4; a > 0; a--){
             for(let b = a; b < size; b++){
-                print(' ');
+                output += (' ');
             }
         for(let c = 0; c <= (a-1)*2; c++){
-            print('*')
+            output += ('*')
         }
         output += '\n';
     }
-    alert(output)
+    console.log(output)
 ```
