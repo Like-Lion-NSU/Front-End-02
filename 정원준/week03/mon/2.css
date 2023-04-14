@@ -1,0 +1,86 @@
+body{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+
+.ab{
+    background-color: teal;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.a{
+    display: flex;
+    justify-content: center;
+    animation: circlemove 1.5s ease-in-out infinite;
+}
+
+.a div{
+    background-color: white;
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.b{
+    display: flex;
+    justify-content: center;
+}
+
+.b div{
+    background-color: white;
+    width: 10px;
+    height: 50px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    margin-top: 70px;
+    animation: move 1s alternate infinite;
+}
+
+@keyframes circlemove{
+    0%{
+        transform: rotate(0deg)
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes move{
+    0%{
+        transform:none
+    }
+    100%{
+        transform: scaleY(2)
+    }
+}
+
+.b div:nth-child(1){
+    animation-delay: 0s;
+}
+
+.b div:nth-child(2){
+    animation-delay: 0.2s;
+}
+
+.b div:nth-child(3){
+    animation-delay: 0.5s;
+}
+
+.b div:nth-child(4){
+    animation-delay: 0.7s;
+}
+
+.b div:nth-child(5){
+    animation-delay: 1s;
+}

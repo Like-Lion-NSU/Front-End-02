@@ -1,0 +1,174 @@
+body{
+    text-align: center;
+    font-family: 'ROBOTO';
+    margin: 0px;
+    padding: 0px;
+}
+ul{
+    list-style-type: none;
+}
+
+.nav{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.nav1{
+    width: 450px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item{
+    margin: 0px;
+    padding: 5px;
+    max-width: 900px;
+    align-items: center;
+    display: flex;
+}
+
+.button{
+    padding: 25px;
+    margin-left: 5px;
+    background-color: black;
+    color: white;
+    transition: all 0.2s linear;
+    border: none;
+}
+
+.button1{
+    color: #FBFBFD;
+    border: none;
+    width: 100px;
+    height: 100px;
+}
+
+.li a{
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.li a:link{
+    color: black;
+}
+
+.li a:visited{
+    color: black;
+}
+
+.li a:hover{
+    color: #0077ED;
+}
+
+#a{
+    margin-left: 30px;
+}
+
+#b{
+    margin-left: 10px;
+}
+
+.button:hover{
+    transform: scale(1.4);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.container1{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #A8A8AB;
+}
+
+.h5{
+    color: #A8A8AB;
+}
+
+#footer{
+    background-color: black;
+    padding: 15px;
+}
+
+#footer a{
+    color: white;
+    text-decoration: none;
+}
+
+.b{
+    border-radius: 15px;
+    color: white;
+    background-color: #0077ED;
+}
+
+.c{
+    color: #0077ED;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.c:hover:after{
+    content: "";
+    display: block;
+    border-bottom: 1px solid #000;
+    width: 80px;
+    margin-left: 750px;
+  }
+
+.d{
+    font-weight: bold;
+}
+
+.e{
+    margin-right: 600px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+.f{
+   text-decoration: none;
+   color: #A8A8AB;
+   margin-left: 5px;
+   margin-top: 10px;
+   font-size: small;
+   padding-bottom: 10px;
+}
+
+.name{
+    margin: 10px;
+    width: 190px;
+    height: 54px;
+}
+
+.other{
+    margin: 10px;
+    width: 414px;
+    height: 54px; 
+}
+
+.log{
+    border-radius: 15px;
+    color: white;
+    background-color: #0077ED;
+    margin: 10px;
+    transition: all 0.2s linear;
+}
+
+.log:active{
+    transform: scale(1.4);
+}
+
+.form-item input:focus{
+    border-color:#0982f0;
+    outline: none;
+}
+
+.apple:hover{
+    filter: brightness(60%) blur(5px);
+}

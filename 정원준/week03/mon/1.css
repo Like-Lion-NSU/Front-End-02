@@ -1,0 +1,6 @@
+.column{
+    column-count: 2;
+    column-width: 200px;
+    text-align: justify;
+    column-rule-style: solid;
+}
