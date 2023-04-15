@@ -8,10 +8,31 @@
 </head>
 <body>
     <script>
-        const a = Number(prompt('피연산자 a를 입력하세요'));
-        const b = Number(prompt('피연산자 b를 입력하세요'));
+      //변수를 선언합니다.
+      let output = '';
+      const size = 5;
 
-        alert(`a와 b의 합은 ${a+b}, a와 b의 차는 ${a-b}, a와 b의 곱은 ${a*b} a와 b의 나누기는 ${a/b} 입니다.`);
+      //반복합니다.
+      for(let i = 1; i <=size; i++){ // '*' 이 9개 나오는 기준으로 크게 2개의 반복문으로 나눔
+        for(let j = size; j > i; j--){  // 첫 '*'이 5번째 위치에 오기 때문에 이런식으로 돌림
+            output += ' ';
+        }
+        for(let a = 0; a < i*2-1; a++){ // i가 행을 나타내는데, i에 따라 홀수개로 '*'이 출력되게 해줌
+            output+='*';
+        }
+        output+='\n'; // 각 행이 출력되면 다음 줄로 넘어감
+      }
+      for(let i = (size - 1); i > 0; i--){ // '*'를 9개까지 출력했으므로 한바퀴 덜 돌려야 함.
+        for(let j = 0; j < size-i; j++){ // 공백을 앞과 다르게 점점 늘려야 함.
+            output += ' ';
+        }
+        for(let a = 0; a < i*2-1; a++){
+            output+='*';
+        }
+        output += '\n';
+      }
+      //출력합니다.
+      console.log(output);
     </script>
 </body>
 </html>
