@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    const gababo = prompt("가위바위보를 입력하세요", "가위: 0, 바위:1, 보:2");
+    const min = 1;
+    const max = 3;
+
+    function getRandom() {
+        return Math.random() * 3; // max는 3, min은 0
+}
+    if(gababo > getRandom()){
+        document.write("승리");
+    }else if(gababo == getRandom()){
+        document.write("무승부");
+    }else{
+        document.write("패배");
+    }
+    
+
+</script>
+</body>
+</html>

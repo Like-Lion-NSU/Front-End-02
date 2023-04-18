@@ -28,8 +28,42 @@ document.write("-> 원화: ", num*1207)
 ```
 
 6.
-구구단, 사칙연산, 가위바위보
+```js
+// 구구단
 
+const gogodan = prompt("출력할 구구단 숫자 입력");
+let i = 1;
+
+// for 문
+for (i = 1; i < 10; i++) {
+    document.write(gogodan + " * " + i + " = " + (gogodan * i) + "<br>");
+}
+
+// 사칙연산
+
+const a = Number(prompt('a 입력'));
+const b = Number(prompt('b 입력'));
+
+document.write(`합: ${a+b}, 차: ${a-b}, 곱: ${a*b} 나누기: ${a/b}`);
+
+//가위바위보
+
+const gababo = prompt("가위바위보를 입력하세요", "가위: 0, 바위:1, 보:2");
+const min = 1;
+const max = 3;
+
+function getRandom() {
+    return Math.random() * 3; // max는 3, min은 0
+}
+
+if(gababo > getRandom()){
+    document.write("승리");
+}else if(gababo == getRandom()){
+    document.write("무승부");
+}else{
+    document.write("패배");
+}
+```
 7.
 Number, a>b, a==b
 
