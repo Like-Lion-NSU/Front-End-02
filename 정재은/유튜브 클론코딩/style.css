@@ -1,0 +1,282 @@
+:root{
+    --white-color:#fff;
+    --black-color:black;
+    --lightgray-color:#F8F8F8;
+    --darkgray-color:#F2F2F2;
+    --blue-color:blue;
+
+    --side-padding:12px;
+    --avatar-size:36px;
+
+    --font-large:18px;
+    --font-medium:14px;
+    --font-small:12px;
+    --font-micro:10px;
+    box-sizing: border-box;
+}
+*{
+    padding:0px;
+    margin:0px;
+}
+body{
+    font-family: 'Roboto', sans-serif;   
+}
+ul{
+    list-style: none;
+}
+header{
+    width:100%;
+    display: flex; /*header를 2구역으로 나눠서 각각 가로 정렬*/
+    Justify-content: space-between; 
+    top:0px;
+    background-color: var(--white-color);
+    margin:0 0 12x 0;
+    position:fixed;  /*스크롤 내려도 상단바는 고정*/
+}
+header button{
+    border: none;
+    background-color: var(--white-color);
+    padding-right:var(--side-padding);
+}
+.nav{
+    padding-right: 30px;
+}
+.navAndLogo, .right, .searchAndIcons{
+    padding:var(--side-padding);
+    display: flex; /*각 요소 안 컨텐츠들을 다시 가로로 정렬*/
+}
+header .logo{
+    font-size:var(--font-large);
+}
+.logo span{
+    position:relative; /*유튜브 글씨랑 로고 세로 가운데 하려고 사용*/
+    bottom:5px;
+}
+/*메뉴와 로고 구역 33% 배당, 나머지 검색과 우측 66% 배당*/
+.navAndLogo{
+    width:33%; 
+}
+.middleRight{ /*66%안에서 두 컨텐츠 좌우로 벌리기*/
+    display: flex;
+    justify-content: space-between;
+    width:66%;
+}
+.player{
+    text-align: center;
+    margin:var(--side-padding);
+}
+.player video{
+    padding-top: 50px;
+    width:100%;
+    height:100%;
+    border:none;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--side-padding);
+}
+.info .maintitle{
+    font-size:var(--font-large);
+    padding-bottom:var(--side-padding);
+}
+.channel{
+    display: flex;
+    align-items: center; /*세로 가운데 정렬*/
+}
+.channel img{
+    width:var(--avatar-size);
+    height:var(--avatar-size);
+    border-radius: 50%;
+}
+.channelAndActions{ /*채널파트와 버튼파트 좌우정렬 후 벌리기*/
+    display: flex;
+    justify-content: space-between;
+}
+.subscribers{
+    font-size: var(--font-micro);
+}
+.actions{ /*버튼 가로정렬*/
+    display:flex;
+}
+.subscribe{
+    background-color: var(--black-color);
+    color:var(--white-color);
+    border-radius: 50px;
+    width:50px;
+    height: 30px;
+    margin-left:var(--side-padding);
+}
+.actions button{
+    font-size:var(--font-small);  
+    height: 40px; 
+    margin: 5px;
+    padding:10px 20px;
+    border-radius: 50px;
+    border: none;
+}
+.actions .button1{
+    border-radius: 50px 0 0 50px;
+    border-right:2px solid #fdfdfd;
+    margin-right: 0px;
+}
+.actions .button2{
+    border-radius: 0 50px 50px 0;
+    margin-left: 0px;
+}
+.explain{
+    background-color: var(--darkgray-color);
+    font-size: var(--font-medium);
+    padding: 15px;
+    border-radius: 15px;
+    margin: var(--side-padding) 0;
+}
+.search{
+    display: flex;
+    align-items: center;
+    
+}
+.search input{
+    border-radius: 50px 0 0 50px;
+    border:1px solid black;
+    width:350px;
+    height:30px;
+}
+.glass{
+    border:1px solid black;
+    border-left:none;
+    border-radius: 0 50px 50px 0;
+    font-size: var(--font-micro);
+    padding: 0 15px;
+    background-color: var(--darkgray-color);
+    height:31.5px;
+}
+.mike{
+    font-size: var(--font-micro);
+    padding-left: var(--side-padding);
+}
+.video ,.bell{
+    font-size: var(--font-micro);
+    padding: 0 15px;
+}
+.bell{
+    padding-right:30px;
+}
+.profile{
+    font-size:15px;
+    background-color: aquamarine;
+    width:36px;
+    height:36px;
+    border-radius: 50%;
+    text-align: center;
+    padding:0px;
+}
+.upNext{
+    padding:12px 12px 12px 0;
+    margin-top: 50px;
+    width:380px;
+}
+.side{
+    display:flex;
+    padding-bottom: var(--side-padding);
+    width:380px;
+    }
+.side button{
+    font-size: var(--font-medium);
+    padding: 7px 10px;
+    border-radius: 10px;
+    border:none;
+    margin:0 10px;
+}
+.side1{
+    background-color: var(--black-color);
+    color:var(--white-color);
+}
+.upNext .item{ /*추천영상 이미지와 설명문 가로정렬*/
+    display: flex;
+    padding-bottom: var(--side-padding);
+}
+.item .info{ /*추천 영상 문구 세로 정렬*/
+    display: flex;
+    flex-direction: column;
+}
+.name, .views{
+    font-size: var(--font-micro);
+}
+.upNext img{
+    width:180px;
+    height:100px;
+}
+.info .title{
+    font-size: var(--font-small);
+    padding-bottom: 10px;
+}
+.infoAndActionAndUpnext{ /*사이즈가 줄어들기 전에는 추천 영상 등이 오른쪽으로 가도록*/
+    display: flex;
+}
+@media screen and (max-width:1000px){ /*가로 사이즈가 1000이하일때*/
+    .infoAndActionAndUpnext{ /*추천 영상 등이 비디오 아래로 가도록 세로 정렬*/
+        display: flex;
+        flex-direction: column;
+    }
+    .upNext{
+        margin-top: 0px;
+        width:100%;
+        padding: var(--side-padding);
+    }
+    header {
+        width:100%;
+        position:fixed;
+        display: flex;
+        Justify-content: space-between;
+    }
+    .searchAndIcons{
+        width:60%;
+        display: flex;
+    }
+    .search { /*가로 사이즈가 줄어들면 검색 사이즈가 가로의 35%가 되도록 지정*/
+        width:35%;
+        position: absolute;
+    }
+    .player{
+        border:none;
+    }
+    .player video{
+        padding-top:0px;
+    }
+
+    .mike{ /*오른쪽에 붙도록 margin 자동 지정*/
+        margin-left:auto;        
+    }
+}
+    @media screen and (max-width:680px){
+    .search input[type="text"]{
+        display: none; /*사이즈가 680이하가 되면 검색 입력 창이 사라지도록*/
+    }
+    .glass{
+        background-color: var(--white-color);
+        padding:0px;
+        border:none;
+    }
+    .search{
+        width:60px;
+    }
+    .searchAndIcons{
+        width:100px;
+        display: flex;
+        justify-content: flex-end; /*돋보기와 마이크가 space-between으로 벌어지지 말고 오른쪽으로 붙도록 사용*/
+        align-items: center;
+        padding-right:0px;
+    }
+    .middleRight{
+        display: flex;
+        justify-content: flex-end; /*로고창을 제외한 두 컨텐츠가 같이 오른쪽에 붙도록 사용*/
+        width:50%
+    }
+    .navAndLogo{
+        width:50%
+    }
+    .right{
+        padding-left:0px;
+    }
+}
