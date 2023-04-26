@@ -15,28 +15,71 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <i class="fa-brands fa-youtube fa-2x"></i>
+            <i class="fa-solid fa-bars" id="q"></i>
+            <div class="logo1">
+            <i class="fa-brands fa-youtube fa-2x" id="i"></i>
             <span class="title">Youtube</span>
+            </div>
         </div>
         <div class="search">
-            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-            <i class="fa-solid fa-microphone"></i>
+            <input type="text" value="검색">
+            <button><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+            <button><i class="fa-solid fa-microphone"></i></button>
         </div>
         <div class="icons">
-            <i class="fa-regular fa-video-plus"></i>
-            <i class="fa-regular fa-bell"></i>
-            <button>원준</button>
+            <i class="fa-solid fa-video"></i>
+            <i class="fa-regular fa-bell" id="u"></i>
+            <img src="unnamed.jpg" alt="">
         </div>
     </header>
 
 
-    <!-- Video Player -->
-    <section class="player">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/qAg6fTVu8gI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </section>
+    <div class="all">
+        <!-- Video Player -->
+        <section class="player">
+            <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/75kySTFaBQQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+        </section>
+
+    <section class="UpNext">
+            <div class="option">
+            <div class="title" id="title1">모두</div>
+            <div class="title" id="title2">내 검색결과</div>
+            <div class="title" id="title2">관련 콘텐츠</div>
+            </div>
+            <ul>
+                <il class="item">
+                    <img src="hqdefault.jpg" alt="">
+                    <div class="info">
+                        <span class="title">𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 내가 사랑한 것들은 언젠간 날 울게 만든다 | 카더가든, 잔나비, 검정치마, 혁오, 데이먼스이어</span>
+                        <span class="name">때껄룩 ᴛᴀᴋᴇ ᴀ ʟᴏᴏᴋ</span>
+                        <span class="views">조회수 78만회</span>
+                    </div>
+                    <button class="moreBtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                </il>
+                <il class="item">
+                    <img src="hqdefault1.jpg" alt="">
+                    <div class="info">
+                        <span class="title">[playlist] 니 생각이 나기 딱 좋은 시간이다 | 새벽 인디 음악 모음 (ft. 검정치마, 잔나비, 카더가든, 혁오...)</span>
+                        <span class="name">성운 ᴘʟᴀʏʟɪꜱᴛ</span>
+                        <span class="views">조회수 719만회</span>
+                    </div>
+                    <button class="moreBtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                </il>
+                <il class="item">
+                    <img src="hqdefault2.jpg" alt="">
+                    <div class="info">
+                        <span class="title">𝐌𝐲 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭ㅣ잔잔한 신카이마코토 애니 OST 모음ㅣRADWIMPS ANIME OST</span>
+                        <span class="name">꽁삼</span>
+                        <span class="views">조회수 35만회</span>
+                    </div>
+                    <button class="moreBtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                </il>
+            </ul>
+        </section>
+    </div>
 
     <!-- Video Info -->
-    <section class="info">
+    <section id="info">
         <!-- Metadata -->
         <div class="metadata">
             <ul class="hashtags">
@@ -46,72 +89,45 @@
                 <span class="title">
                     [playlist] 딱 요즘 듣는 잔잔한 인디들 | 카더가든, 잔나비, 검정치마, 혁오, 짙은, 데이먼스이어
                 </span>
-                <button class="moreBtn"><i class="fa-solid fa-caret-down"></i></button>
             </div>
             <div class="views">
                 <span class="views">조회수 7,880,189회  2022. 1. 22.</span>
             </div>
         </div>
-        <!-- Actions -->
-        <ul class="actions">
-            <li>
-                <button><i class="fa-regular fa-thumbs-up"></i><span>8.6만</span></button>
-            </li>
-            <li>
-                <button><i class="fa-regular fa-thumbs-down"><span></span></i></button>
-            </li>
-            <li>
-                <button><i class="fa-regular fa-share"></i><span>공유</span></button>
-            </li>
-            <li>
-                <button><i class="fa-regular fa-plus"></i><span>오프라인 저장</span></button>
-            </li>
-            <li>
-                <button><i class="fa-regular fa-flag"></i><span>신고</span></button>
-            </li>
-        </ul>
-        <!-- Channel Description -->
-        <div class="channel">
-            <div class="metadata">
-                <img src="channels4_profile.jpg" alt="">
-                <div class="info">
-                    <span class="name">오퓨쳐Five future</span>
-                <span class="subscribers">구독자 1.72만명</span></div>
+
+        <!-- Click -->
+        <div class="click">
+            <!-- Channel Description -->
+            <div class="channel">
+                <div class="metadata">
+                    <img src="channels4_profile.jpg" alt="">
+                    <div class="info">
+                        <span class="name">오퓨쳐Five future</span>
+                    <span class="subscribers">구독자 1.72만명</span></div>
+                </div>
+                <div class="subscribe">구독</div>
             </div>
-            <div class="subscribe">subscribe</div>
+            <!-- Actions -->
+            <ul class="actions">
+                <li class="button">
+                    <button><i class="fa-regular fa-thumbs-up"></i><span>8.6만</span></button>
+                </li>
+                <li class="button">
+                    <button><i class="fa-regular fa-thumbs-down"><span></span></i></button>
+                </li>
+                <li class="button">
+                    <button><i class="fa-solid fa-share"></i><span>공유</span></button>
+                </li>
+                <li class="button">
+                    <button id="b"><i class="fa-regular fa-plus"></i><span>오프라인 저장</span></button>
+                </li>
+                <li class="button">
+                    <button><i class="fa-regular fa-flag" ></i><span>신고</span></button>
+                </li>
+            </ul>
         </div>
-    </section>
-    <section class="UpNext">
-        <span class="title">모두</span>
-        <ul>
-            <il class="item">
-                <img src="hqdefault.jpg" alt="">
-                <div class="info">
-                    <span class="title">𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 내가 사랑한 것들은 언젠간 날 울게 만든다 | 카더가든, 잔나비, 검정치마, 혁오, 데이먼스이어</span>
-                    <span class="name">때껄룩ᴛᴀᴋᴇ ᴀ ʟᴏᴏᴋ</span>
-                    <span class="views">조회수 78만회</span>
-                </div>
-                <button class="moreBtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-            </il>
-            <il class="item">
-                <img src="hqdefault1.jpg" alt="">
-                <div class="info">
-                    <span class="title">[playlist] 니 생각이 나기 딱 좋은 시간이다 | 새벽 인디 음악 모음 (ft. 검정치마, 잔나비, 카더가든, 혁오...)</span>
-                    <span class="name">성운 ᴘʟᴀʏʟɪꜱᴛ</span>
-                    <span class="views">조회수 719만회</span>
-                </div>
-                <button class="moreBtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-            </il>
-            <il class="item">
-                <img src="hqdefault2.jpg" alt="">
-                <div class="info">
-                    <span class="title">𝐌𝐲 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭ㅣ잔잔한 신카이마코토 애니 OST 모음ㅣRADWIMPS ANIME OST</span>
-                    <span class="name">꽁삼</span>
-                    <span class="views">조회수 35만회</span>
-                </div>
-                <button class="moreBtn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-            </il>
-        </ul>
+
+        <div class="more">내가 좋아하는 노래들로 차곡차곡 더보기</div>
     </section>
     
 </body>
