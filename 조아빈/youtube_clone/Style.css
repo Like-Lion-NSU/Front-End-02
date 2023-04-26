@@ -236,7 +236,12 @@ section{
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    cursor: pointer;
 }
+.creater__logo sup{
+    cursor: pointer;
+}
+
 .main__video--info{
     width: 98.5%;
     background-color: #f2f2f2;
