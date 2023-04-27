@@ -1,0 +1,66 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header a{
+    display: block;
+    width: 250px;
+}
+
+.header{
+    width: 638px;
+    height: 50px;
+    background-image: url("https://static.nid.naver.com/images/ui/join/m_naver_logo_20191126.png");
+    background-repeat: no-repeat;
+    background-position: 200px 0px;
+    background-size: 235px;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+}
+
+.center span{
+    border: 1px solid lightgray;
+    color: #8e8e8e;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 100%;
+    height: 51px;
+}
+
+.center input{
+    border: none;
+}
+
+input{
+    width: 335px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.check{
+    width: 100%;
+    height: 50px;
+    background-image: url(https://static.nid.naver.com/images/ui/join/m_icon_pw_step.png);
+    background-repeat: no-repeat;
+    background-position: 390px 8px;
+    background-size: 200px;
+}
+
+.recheck{
+    width: 0px;
+    height: 50px;
+    background-image: url(https://static.nid.naver.com/images/ui/join/m_icon_pw_step.png);
+    background-repeat: no-repeat;
+    background-position: 350px 8px;
+    background-size: 200px;
+}
