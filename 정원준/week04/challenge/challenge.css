@@ -1,0 +1,234 @@
+body{
+    background-color: #dcdcdc;
+    display: flex;
+    justify-content: space-between;
+}
+
+div{
+    margin: 100px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    width: 500px;
+    height: 700px;
+    background-color: white;
+    border-radius: 40px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header span{
+    margin: 40px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main img{
+    border-radius: 50%;
+    width: 100px;
+}
+
+.main h2{
+    margin-bottom: 0px;
+}
+
+.main h4{
+    margin-top: 10px;
+    color: darkgrey;
+}
+
+.menu{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.span1{
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.span2{
+    margin-left: 10px;
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1px solid #dcdcdc;
+}
+
+.span2 h4{
+    margin-left: 5px;
+    color: darkgray;
+}
+
+.player{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 0px;
+}
+
+.player img{
+    width: 50px;
+    border-radius: 10px;
+}
+
+.player span{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.name{
+    font-size: 10px;
+    color: darkgray;
+}
+
+.title{
+    font-size: 15px;
+}
+
+#write{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    margin-right: 100px;
+}
+
+.i{
+    display: flex;
+    align-items: center;
+    color: darkgray;
+}
+
+.img{
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    background-image: url(Q_80\,0.jpg);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-size: 50px;
+    display: flex;
+    filter: brightness(0.8);
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.bar{
+    display: flex;
+    width: 400px;
+    height: 70px;
+    border-radius: 40px;
+    background-color: black;
+    color: white;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.pooter1{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: 100px;
+}
+
+.pootername{
+    font-size: 13px;
+    color: darkgrey;
+}
+
+.pooter2{
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainimg{
+    display: flex;
+    justify-content: center;
+}
+
+.mainimg img{
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+}
+
+.maintitle{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.h4{
+    color: darkgray;
+}
+
+.music{
+    display: flex;
+    flex-direction: column;
+}
+
+.music span{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.music input{
+    width: 400px;
+    accent-color: black;
+}
+
+#musictime{
+    margin-left: 0px;
+    width: 500px;
+    margin-bottom: 0px;
+}
+
+.time{
+    color: darkgray;
+    font-size: 13px;
+}
+
+#range{
+    margin-top: 0px;
+}
+
+.musicbar{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gray{
+    color: darkgray;
+}
