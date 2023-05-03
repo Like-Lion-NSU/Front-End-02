@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="alert" onclick="alertfnc()">
+    <input type="button" value="confirm" onclick="func_confirm()">
+    <input type="button" value="prompt" onclick="func_prompt()">
+
+    <ul>
+        <li>HTML</li>
+        <li class="active">CSS</li>
+        <li class="active">JavaScript</li>
+    </ul>
+
+    <script>
+        function alertfnc(){
+            alert(1);
+            alert(2);
+            alert(3);
+        }
+
+        function func_confirm(){
+            if(confirm('ok?')){
+                alert('ok');
+            }else{
+                alert('cancle');
+            }
+        }
+        
+        function func_prompt(){
+            if(prompt('id') === 'egoing'){
+                alert('welcome');
+            }else{
+                alert('fail');
+            }
+        }
+
+        var lis = document.getElementsByClassName('active');
+        for(var i = 0; i < lis.length; i++){
+            lis[i].style.color = 'red';
+        }
+
+        // var lis = document.getElementsByTagName('li');
+        // for(var i = 0; i < lis.length; i++){
+        //     lis[i].style.color = 'red';
+        // }
+
+    </script>
+</body>
+</html>
