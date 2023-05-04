@@ -197,7 +197,8 @@ select:focus{
 }
 .pass:focus-within, .name:focus-within, .birth:focus-within, .date:focus-within, .email:focus-within, .phnum:focus-within {
     border: 1px solid #03c75a;
-}
+} /* focus-within : 해당 요소 내부에 자식 요소가 포커스를 받을 때 부모 요소에 스타일을 적용*/
+
 
 .pass input:focus, .name input:focus, .birth input:focus, .date input:focus, .email input:focus, .phnum input:focus {
     outline: none;
