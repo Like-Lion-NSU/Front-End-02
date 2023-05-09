@@ -33,15 +33,16 @@
 
     <script>
         const $screen = document.querySelector('#screen');
-        const $result = document.querySelector('#result')
+        const $result = document.querySelector('#result');
     
 
         let start;
         let end;
+        const record = [];
 
-        $screen.addEventListener('click', function() {
-            if(event.target.classList.contains('wating')){  // 대기화면
-                $screen.classList.remove('wating');
+        $screen.addEventListener('click', (event) => {
+            if(event.target.classList.contains('waiting')){  // 대기화면
+                $screen.classList.remove('waiting');
                 $screen.classList.add('ready');
                 $screen.textContent = '초록색이 되면 클릭하세요';
                 
@@ -59,9 +60,9 @@
             }else if(event.target.classList.contains('now')){ // 클릭화면
                 end = new Date();
                 const today = end - start;
-                a.push(today);
+                record.push(today);
                 console.log(end, start);
-                const avg = a.reduce((a, b) => a + b) / a.length;
+                const avg = record.reduce((a, b) => a + b) / record.length;
                 $result.textContent = `${today}ms, 평균: ${avg}ms`;
                 start = null;
                 end = null;
@@ -73,3 +74,12 @@
     </script>
 </body>
 </html>
+<!-- 
+퀴즈 1.
+hello, hi, seu 만 남음
+
+퀴즈 2.
+10일
+
+퀴즈 3.
+{10, 20, 30, 40, 50} -->
