@@ -12,31 +12,122 @@
     <div id="board"></div>
     <script>
         const board = document.getElementById('board');
-
         const table = document.createElement('table');
-        table.style.borderCollapse = 'collapse'; //겹치는 선 합치기
+        const result = document.createElement('div');
+        const cells = [];
+        const rows = [];
+        let gameOver = false;
+        let turn = 'X';
 
+        // 테이블 스타일 설정
+        table.style.fontSize = '50px';
+        table.style.fontWeight = 'bold';
+        table.style.textAlign = 'center';
+        table.style.borderCollapse = 'collapse';
+
+        // 무승부 확인 함수
+        function checkDraw() {
+            let isDraw = true;
+
+            for (let i = 0; i < cells.length; i++) {
+                for (let j = 0; j < cells[i].length; j++) {
+                    if (cells[i][j].textContent === '') {
+                        isDraw = false;
+                        break;
+                    }
+                }
+                if (!isDraw) {
+                    break;
+                }
+            }
+
+            return isDraw;
+        }
+
+        // 셀 클릭 시 동작하는 콜백 함수
+        const callback = function (event) {
+            if (gameOver) {
+                return;
+            }
+
+            let three = false;
+
+            const line = rows.indexOf(event.target.parentNode); // 몇 번째 줄인지
+            const room = cells[line].indexOf(event.target); // 몇 번째 칸인지
+
+            if (cells[line][room].textContent !== '') {
+                console.log('빈칸이 아닙니다.');
+                return;
+            }
+
+            cells[line][room].textContent = turn;
+
+            if (
+                // 가로줄 검사
+                cells[line][0].textContent === turn &&
+                cells[line][1].textContent === turn &&
+                cells[line][2].textContent === turn
+            ) {
+                three = true;
+            } else if (
+                // 세로줄 검사
+                cells[0][room].textContent === turn &&
+                cells[1][room].textContent === turn &&
+                cells[2][room].textContent === turn
+            ) {
+                three = true;
+            } else if (
+                // 대각선 검사 (1)
+                line - room === 0 &&
+                cells[0][0].textContent === turn &&
+                cells[1][1].textContent === turn &&
+                cells[2][2].textContent === turn
+            ) {
+                three = true;
+            } else if (
+                // 대각선 검사 (2)
+                Math.abs(line - room) === 2 &&
+                cells[0][2].textContent === turn &&
+                cells[1][1].textContent === turn &&
+                cells[2][0].textContent === turn
+            ) {
+                three = true;
+            }
+
+            if (three) {
+                result.textContent = 'Player ' + turn + ' wins!';
+                board.appendChild(result);
+                gameOver = true;
+                table.removeEventListener('click', callback);
+            } else if (checkDraw()) {
+                result.textContent = 'Draw!';
+                board.appendChild(result);
+                gameOver = true;
+                table.removeEventListener('click', callback);
+            } else {
+                turn = turn === 'X' ? 'O' : 'X';
+            }
+        };
         for (let i = 0; i < 3; i++) {
             const row = document.createElement('tr');
+            rows.push(row);
+            cells.push([]); // 0:[] 1:[] 2:[]
 
             for (let j = 0; j < 3; j++) {
                 const cell = document.createElement('td');
+                cell.addEventListener('click', callback);
+                cells[i].push(cell); // 0: [td,td,td] 1: [td,td,td] 2: [td,td,td]
                 cell.style.border = '1px solid black';
                 cell.style.width = '100px';
                 cell.style.height = '100px';
+
                 row.appendChild(cell); //cell (td)를 row(tr)의 자식으로
             }
             table.appendChild(row); //row(tr)을 table의 자식으로
         }
         board.appendChild(table); //table을 board의 자식으로
+        console.log(rows, cells);
 
-        /* 
-        if (turn === "O") {
-            } else {
-              turn = "O";
-            }
-            let turn="O"?"X":"O" //O이 truthy라면 X, 거짓이면O 
-        */
     </script>
 </body>
 
