@@ -41,6 +41,11 @@ h3{
     flex-direction: column;
 }
 
+.center1{
+    display: flex;
+    flex-direction: column;
+}
+
 #magin{
     margin-left: 20px;
 }
@@ -51,6 +56,10 @@ h3{
 }
 
 .center input{
+    border: none;
+}
+
+.center1 input{
     border: none;
 }
 
@@ -105,8 +114,8 @@ span{
     height: 51px;
     background-image: url(https://static.nid.naver.com/images/ui/join/m_icon_pw_step.png);
     background-repeat: no-repeat;
-    background-position: 8px 7px;
-    background-size: 200px;
+    background-position: 0% 0%;
+    background-size: 230px 138px;
     border-left-width: 0px;
 }
 
