@@ -32,7 +32,7 @@
                     <div class="rock"></div>
                 </div>
             </div><br>
-            <div>
+            <div id="PWD2">
                 <label for="pass2">비밀번호 재확인</label><br>
                 <div class="pass"><br>
                     <input type="password" class="passtext" id="pass2">
@@ -46,14 +46,14 @@
                 </div>
             </div><br>
 
-            <div>
+            <div class="bDay">
                 <label for="year">생년월일</label><br>
                 <div id="birth">
                     <div class="birth">
-                        <input type="text" placeholder=" 년(4자)" class="year" id="year">
+                        <input type="text" placeholder=" 년(4자)" class="year" id="year" maxlength="4">
                     </div>
                     <select class="month">
-                        <option selected> &nbsp;&nbsp;월</option>
+                        <option selected>월</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -68,7 +68,7 @@
                         <option>12</option>
                     </select>
                     <div class="date">
-                        <input type="text" placeholder=" 일" class="day"><br>
+                        <input type="text" placeholder=" 일" class="day" maxlength="2"><br>
                     </div>
                 </div>
             </div><br>

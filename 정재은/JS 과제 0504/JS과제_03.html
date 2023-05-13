@@ -88,7 +88,7 @@
                 three = true;
             } else if (
                 // 대각선 검사 (2)
-                //Math.abs(line - room) === 2 &&
+                Math.abs(line - room) === 2 &&
                 cells[0][2].textContent === turn &&
                 cells[1][1].textContent === turn &&
                 cells[2][0].textContent === turn
@@ -96,18 +96,19 @@
                 three = true;
             }
 
-            if (three) {
+            if (three) { //이겼다면
                 result.textContent = turn + '이 승리';
-                board.appendChild(result);
-                gameOver = true;
-                table.removeEventListener('click', callback);
+                board.appendChild(result); //결과 출력을 board 안에 넣음
+                gameOver = true; // 승부가 났으니까 gameover
+                table.removeEventListener('click', callback); // gameover이니까 클릭 이벤트 리스너를 지움 -> 더이상 클릭 받으면 안되니까
             } else if (checkDraw()) {
                 result.textContent = '무승부입니다';
                 board.appendChild(result);
-                gameOver = true;
+                gameOver = true; // 비겼어도 게임 끝내는건 동일
                 table.removeEventListener('click', callback);
-            } else {
+            } else { // 아직 게임이 진행중이니까 
                 turn = turn === 'O' ? 'X' : 'O';
+                //if(turn==='0') turn='x' else turn='o'
             }
         };
         for (let i = 0; i < 3; i++) {
