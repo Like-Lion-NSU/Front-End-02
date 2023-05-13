@@ -39,34 +39,34 @@
     <div></div>
     -->
     <script>
-        const {body} = document;
+        const {body} = document;    // body 객체에 document 넣고
         
-        const $table = document.createElement('table');
+        const $table = document.createElement('table'); // table , div객체 만들고
         const $result = document.createElement('div');
         const rows = [];
         let turn = 'O';
 
-        const checkWinner = (target) => {
-            const rowIndex = target.parentNode.rowIndex;
+        const checkWinner = (target) => {   // target 함수
+            const rowIndex = target.parentNode.rowIndex;    // tr이랑 td확인
             const cellIndex = target.cellIndex;
 
             let hasWinner = false;
             if(
-                rows[rowIndex][0].textContent === turn &&
+                rows[rowIndex][0].textContent === turn &&   // tr이 빙고일 때
                 rows[rowIndex][1].textContent === turn &&
                 rows[rowIndex][2].textContent === turn
             ){
                 hasWinner = true;
             }
             if(
-                rows[0][cellIndex].textContent === turn &&
+                rows[0][cellIndex].textContent === turn &&  // td가 빙고일 때
                 rows[1][cellIndex].textContent === turn &&
                 rows[2][cellIndex].textContent === turn
             ){
                 hasWinner = true;
             }
             if(
-                rows[0][0].textContent === turn &&
+                rows[0][0].textContent === turn &&  // 대각선 빙고일 때
                 rows[1][1].textContent === turn &&
                 rows[2][2].textContent === turn
             ){
@@ -79,43 +79,43 @@
             ){
                 hasWinner = true;
             }
-            return hasWinner;
+            return hasWinner;       // hasWinner 반환
         };
 
         const callback = (event) => {
-            if(event.target.textContent !== ''){
+            if(event.target.textContent !== ''){    // 텍스트가 빈칸이 아니면
                 console.log('빈칸이 아닙니다.');
                 return;
-                }
+                }                                   // 텍트스가 빈칸이면
             console.log('빈칸입니다');
             event.target.textContent = turn;
-            if(checkWinner(event.target)){
+            if(checkWinner(event.target)){          // checkWinner함수 확인했는데 승리조건 확인되면
                 $result.textContent = `${turn}님이 승리!`;
-                $table.removeEventListener('click', callback);
+                $table.removeEventListener('click', callback);      // 클릭이벤트 없앰
                 return;
             }
-            const draw = rows.flat().every((cell) => cell.textContent);
+            const draw = rows.flat().every((cell) => cell.textContent); // 승리조건에 맞는 경우가 없으면 무승부
             if(draw) {
                 $result.textContent = '무승부';
                 return;
             }
-                turn = turn === 'X' ? 'O' : 'X';
+                turn = turn === 'X' ? 'O' : 'X';        // ox 번갈아가면서 출력되게 하기
             };
 
         for(let i = 1; i <= 3; i++){
-            const $tr = document.createElement('tr');
+            const $tr = document.createElement('tr');   // tr 3칸 만들고
             const cells = [];
             for(let j = 1; j <= 3; j++){
-                const $td = document.createElement('td');
-                cells.push($td);
-                $tr.append($td);
+                const $td = document.createElement('td');   // td 3칸 만들고
+                cells.push($td);        // cells에 td 푸쉬
+                $tr.append($td);        // tr에 td추가
             }
-            rows.push(cells);
-            $table.append($tr);
+            rows.push(cells);           // rows에 cells 푸쉬
+            $table.append($tr);         // table에 tr 추가
         }
-        $table.addEventListener('click', callback);
-        body.append($table);
-        body.append($result);
+        $table.addEventListener('click', callback);     // 클릭이벤트 추가
+        body.append($table);                            // table요소 추가
+        body.append($result);                           // result요소 추가
     </script>
 </body>
 </html>

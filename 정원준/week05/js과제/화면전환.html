@@ -32,7 +32,7 @@
     
 
     <script>
-        const $screen = document.querySelector('#screen');
+        const $screen = document.querySelector('#screen');  // css 불러오고
         const $result = document.querySelector('#result');
     
 
@@ -40,35 +40,35 @@
         let end;
         const record = [];
 
-        $screen.addEventListener('click', (event) => {
-            if(event.target.classList.contains('waiting')){  // 대기화면
-                $screen.classList.remove('waiting');
-                $screen.classList.add('ready');
-                $screen.textContent = '초록색이 되면 클릭하세요';
+        $screen.addEventListener('click', (event) => {      // 이벤트리스너 써서 click이벤트 쓰고
+            if(event.target.classList.contains('waiting')){     // classlist에 waiting가 포함된 상태라면
+                $screen.classList.remove('waiting');    // waiting 삭제하고
+                $screen.classList.add('ready');     // ready로 클래스 추가
+                $screen.textContent = '초록색이 되면 클릭하세요';   // 그러면서 말도 바뀜
                 
-                timeoutId = setTimeout(function() {
-                    start = new Date();
-                    $screen.classList.remove('ready');
-                    $screen.classList.add('now');
-                    $screen.textContent = '클릭하세요!';
-                }, Math.floor(Math.random() * 1000) + 3000);    // 3000~4000 사이 수
-            }else if(event.target.classList.contains('ready')){   // 준비화면
-                clearTimeout(timeoutId);
-                $screen.classList.remove('ready');
-                $screen.classList.add('waiting');
-                $screen.textContent = '너무 성급하시군요!';
-            }else if(event.target.classList.contains('now')){ // 클릭화면
-                end = new Date();
-                const today = end - start;
-                record.push(today);
-                console.log(end, start);
-                const avg = record.reduce((a, b) => a + b) / record.length;
-                $result.textContent = `${today}ms, 평균: ${avg}ms`;
-                start = null;
+                timeoutId = setTimeout(function() {         // 타이머함수 시작
+                    start = new Date();                     // 시작점 잡고
+                    $screen.classList.remove('ready');      // ready 삭제하고
+                    $screen.classList.add('now');           // now 클래스 추가
+                    $screen.textContent = '클릭하세요!';     // 말 바뀌고
+                }, Math.floor(Math.random() * 1000) + 3000);    // 랜덤으로 뜸 (3초~4초 사이)
+            }else if(event.target.classList.contains('ready')){   // classlist에 ready가 포함된 상태라면
+                clearTimeout(timeoutId);                    // 타이머함수 종료
+                $screen.classList.remove('ready');          // ready 제거
+                $screen.classList.add('waiting');           // waiting 추가
+                $screen.textContent = '너무 성급하시군요!';  // 말 바뀜
+            }else if(event.target.classList.contains('now')){       // classlist에 now가 포함된 상태라면
+                end = new Date();                           // 타이머함수 종료점
+                const today = end - start;                  // today에 시간넣고
+                record.push(today);                         // today를 record에 푸쉬
+                console.log(end, start);                    // 콘솔에도 시작이랑 끝점 써주고
+                const avg = record.reduce((a, b) => a + b) / record.length; // avg에 reduce랑 record길이로 평균 구하기
+                $result.textContent = `${today}ms, 평균: ${avg}ms`; // 시간 적기
+                start = null;   // 시작이랑 끝 null값으로 변경
                 end = null;
-                $screen.classList.remove('now');
-                $screen.classList.add('waiting');
-                $screen.textContent = '클릭해서 시작하세요.'
+                $screen.classList.remove('now');            // now 삭제
+                $screen.classList.add('waiting');           // waiting 추가
+                $screen.textContent = '클릭해서 시작하세요.'  // 말 바뀜
             }
         })
     </script>
