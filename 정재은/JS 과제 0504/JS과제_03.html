@@ -17,7 +17,7 @@
         const cells = [];
         const rows = [];
         let gameOver = false;
-        let turn = 'X';
+        let turn = 'O';
 
         // 테이블 스타일 설정
         table.style.fontSize = '50px';
@@ -95,17 +95,17 @@
             }
 
             if (three) {
-                result.textContent = 'Player ' + turn + ' wins!';
+                result.textContent = turn + '이 승리';
                 board.appendChild(result);
                 gameOver = true;
                 table.removeEventListener('click', callback);
             } else if (checkDraw()) {
-                result.textContent = 'Draw!';
+                result.textContent = '무승부입니다';
                 board.appendChild(result);
                 gameOver = true;
                 table.removeEventListener('click', callback);
             } else {
-                turn = turn === 'X' ? 'O' : 'X';
+                turn = turn === 'O' ? 'X' : 'O';
             }
         };
         for (let i = 0; i < 3; i++) {
