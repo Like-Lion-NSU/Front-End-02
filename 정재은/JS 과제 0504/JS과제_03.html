@@ -31,12 +31,12 @@
 
             for (let i = 0; i < cells.length; i++) {
                 for (let j = 0; j < cells[i].length; j++) {
-                    if (cells[i][j].textContent === '') {
-                        isDraw = false;
-                        break;
+                    if (cells[i][j].textContent === '') {  // 만약 칸이 비어있다면
+                        isDraw = false; // 무승부가 아닌거지? 
+                        break; // 무승부 아니니까 반복문 나가라
                     }
                 }
-                if (!isDraw) {
+                if (!isDraw) { //isDraw가 false일때 실행
                     break;
                 }
             }
@@ -50,27 +50,29 @@
                 return;
             }
 
-            let three = false;
+            let three = false; // 한 줄이 같은지 
 
-            const line = rows.indexOf(event.target.parentNode); // 몇 번째 줄인지
-            const room = cells[line].indexOf(event.target); // 몇 번째 칸인지
+            const line = rows.indexOf(event.target.parentNode); // 몇 번째 줄인지 - 클릭된 칸의 부모, 즉 row를 가져와서 rows에서 해당 row를 찾음  
+            const room = cells[line].indexOf(event.target); // 몇 번째 칸인지  - 해당 줄에 해당하는 td들을 가져와서 클릭된 칸을 찾음
 
             if (cells[line][room].textContent !== '') {
                 console.log('빈칸이 아닙니다.');
                 return;
             }
-
+            
             cells[line][room].textContent = turn;
+            console.log('빈칸입니다.');
+            
 
             if (
-                // 가로줄 검사
+                // 가로줄 검사 - 같은 line(줄)에 td의 값을 0 1 2
                 cells[line][0].textContent === turn &&
                 cells[line][1].textContent === turn &&
                 cells[line][2].textContent === turn
             ) {
-                three = true;
+                three = true; // 승리 true
             } else if (
-                // 세로줄 검사
+                // 세로줄 검사 - 같은 room td배열에 line을 0 1 2
                 cells[0][room].textContent === turn &&
                 cells[1][room].textContent === turn &&
                 cells[2][room].textContent === turn
@@ -78,7 +80,7 @@
                 three = true;
             } else if (
                 // 대각선 검사 (1)
-                line - room === 0 &&
+                line - room === 0 && //[0,0],[1,1],[2,2]들은 빼면0임
                 cells[0][0].textContent === turn &&
                 cells[1][1].textContent === turn &&
                 cells[2][2].textContent === turn
@@ -86,7 +88,7 @@
                 three = true;
             } else if (
                 // 대각선 검사 (2)
-                Math.abs(line - room) === 2 &&
+                //Math.abs(line - room) === 2 &&
                 cells[0][2].textContent === turn &&
                 cells[1][1].textContent === turn &&
                 cells[2][0].textContent === turn
@@ -126,9 +128,16 @@
             table.appendChild(row); //row(tr)을 table의 자식으로
         }
         board.appendChild(table); //table을 board의 자식으로
-        console.log(rows, cells);
 
     </script>
+<!--
+cell : td
+cells : td * 3
+row : tr
+rows : tr * 3
+line : 몇번째 줄
+room : 몇번째 칸
+-->
 </body>
 
 </html>
