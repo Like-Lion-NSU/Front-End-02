@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //첫번째 문제
+     /*const first = prompt('키를 입력하세요'); // 키들을 입력받을 변수
+    let second = ""; //정렬된 키 배열을 입력받을 변수
+
+    sorted = unsorted  // sorted에는 정렬된 형태로 저장
+    .split(" ")        // 문자열을 지정한 구분자로 잘라주어 하나의 요소로 만들어줌
+    .sort()            // 요소들을 정렬시켜주는 함수
+    .join(" ");        // 요소들을 지정한 구분자로 구분시켜서 배열에 저장시켜주는 함수
+
+    if (unsorted === sorted) {  //만약 둘의 값이 같다면 정렬된 상태
+        console.log("Yes");
+    } else {
+         console.log("No");
+    } */
+
+    //두번째 문제
+
+   /* const number = Number(prompt('1~9까지의 수 입력')); // 몇단을 입력받을지 
+    let numarr = ' ';    //하나의 문자열로 저장
+    for(let i = 1; i < 10; i++){
+       numarr += number*i + ' '; //number*i를 numarr에 이어 붙임, *9까자 써지게 된다.
+    }
+    console.log(numarr); //저장한 구구단 문자열 출력 */ 
+
+    //세번째 문제
+
+    //네번째 문제
+    /*const weight = prompt('제한 무게');
+    const people = prompt('제한 인원');
+
+    let count = 0;
+    let weitotal = 0;
+
+    for(let i = 1; i <= people; i++){
+        weitotal += Number(prompt('무게입력'));
+        if(weitotal <= weight){
+            count++;
+        }
+    }
+
+    console.log(count);*/
+
+    //다섯번째 문제
+
+    let num = Number(prompt('숫자입력'));
+    let num2 = [];
+    let 이진수 = '';
+    while(num){
+        num = num/2;
+        num2.push(num%2);
+    }
+    num2.reverse();
+    num2.forEach((value) => {이진수 += value;})
+
+    console.log(이진수);
+    </script>
+</body>
+</html>
