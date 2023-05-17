@@ -1,9 +1,11 @@
+/* :root는 전역 CSS 변수 선언에 유용하게 사용할 수 있음 */
 :root {
     --primary-color: #e50914;
     --dark-color: #141414;
 }
 
 * {
+    /* box-sizing은 박스의 크기를 어떤 것을 기준으로 계산할지를 정하는 속성 */
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -43,19 +45,27 @@ img {
 .showcase {
     width: 100%;
     height: 93vh;
+    /* relative	요소 자기 자신을 기준으로 배치 */
     position: relative;
     background: url('https://i.ibb.co/vXqDmnh/background.jpg') no-repeat center center/cover;
+    /* no-repeat : 반복x  center/cover : 화면 사이즈에 딱 맞춤*/
 }
 
+/* :after는 HTML이 끝날 때 추가되는 가상 요소 */
 .showcase::after {
     content: '';
+    /* absolute	부모(조상) 요소를 기준으로 배치 */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
+    /* rgba : CSS에서 투명도를 조절하고 싶을때
+    R 레드 [0~255] G 그린 [0~255] B 블루 [0~255] A(alpha) [0~1] */
     background: rgba(0, 0, 0, 0.6);
+    /* box-shadow CSS 속성은 요소의 테두리를 감싼 그림자 효과를 추가 */
+    /* inset은 태그 요소의 위치를 결정하는 top, right, bottom, left의 축약 스타일 속성 */
     box-shadow: inset 120px 100px 250px #000000, inset -120px -100px 250px #000000;
 }
 
@@ -70,6 +80,8 @@ img {
     position: absolute;
     top: 50%;
     left: 50%;
+    /* transform은 요소에 회전, 크기 조절, 기울이기, 이동 효과를 부여할 수 있음 */
+    /* translate(x, y) */
     transform: translate(-50%, -50%);
 }
 
@@ -83,22 +95,27 @@ img {
 .showcase-content {
     position: relative;
     margin: auto;
+    /* Flex는 한 방향 레이아웃 시스템 (1차원) */
     display: flex;
     flex-direction: column;
     justify-self: center;
     align-items: center;
     text-align: center;
+    /* rem : 루트 요소 폰트 사이즈의 상대 단위 */
     margin-top: 9rem;
 }
 
 .showcase-content h1 {
     font-weight: 700;
     font-size: 5.2rem;
+    /* line-height는 줄 높이를 정하는 속성 */
     line-height: 1.1;
     margin: 0 0 2rem;
 }
 
 .showcase-content p {
+    /* text-transform은 대문자로 또는 소문자로 바꾸는 속성 */
+    /* uppercase : 모든 글자를 대문자로 */
     text-transform: uppercase;
     color: #fff;
     font-weight: 400;
@@ -115,8 +132,15 @@ img {
 }
 
 .tabs .container {
+    /* Grid는 두 방향(가로-세로) 레이아웃 시스템 (2차원) */
     display: grid;
+    /* grid-template-columns : 컨테이너에 Grid 트랙의 크기들을 지정해주는 속성 */
+    /* grid-template-rows는 행(row)의 배치
+    grid-template-columns는 열(column)의 배치 */
+    /* fr은 숫자 비율대로 트랙의 크기를 나눔 */
+    /* repeat(반복횟수, 반복값) */
     grid-template-columns: repeat(3, 1fr);
+    /* grid-gap : Grid 셀 사이의 간격 */
     grid-gap: 1rem;
     align-items: center;
     justify-content: center;
@@ -155,6 +179,7 @@ img {
     display: none;
 }
 
+/* 나중에 설정한 값이 적용되지 않게 하려면 속성값 뒤에 !important */
 .show {
     display: block !important;
 }
@@ -215,6 +240,7 @@ img {
 .footer {
     max-width: 75%;
     margin: 1rem auto;
+    /* overflow : 요소의 콘텐츠가 너무 커서 요소의 블록 서식 맥락에 맞출 수 없을 때의 처리법을 지정 */
     overflow: auto;
 }
 
@@ -272,6 +298,7 @@ img {
 
 /* Buttons */
 .btn {
+    /* inline-block : 여러 개의 엘리먼트를 한 줄에 정확히 원하는 너비만큼 배치할 수 있음 */
     display: inline-block;
     background: var(--primary-color);
     color: #fff;
@@ -310,8 +337,14 @@ img {
     margin-left: 1rem;
 }
 
+/*
+    @media (조건) {
+    스타일
+    }
+*/
 @media (max-width: 960px) {
     .showcase {
+        /* vh : 현재 실행중인 스크린 크기에 맞춰 상대적 크기를 반환 */
         height: 70vh;
     }
 
