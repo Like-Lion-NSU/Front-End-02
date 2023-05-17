@@ -22,3 +22,12 @@ const removeShow = () => {
 
 tabItems.forEach(item=>item.addEventListener('click',selectItem));
 //tabItems라는 배열에 forEach 메소드로 반복, 각 요소에 클릭이라는 이벤트를 등록함
+
+/*
+function removeBorder(item) {
+    item.classList.remove('tab-border');
+}
+
+tabItems.forEach(function(item) {
+    removeBorder(item);
+});*/
