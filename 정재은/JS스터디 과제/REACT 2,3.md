@@ -271,10 +271,15 @@ JSX내부에서 props 렌더링
 
 ### children : 컴포넌트 태그 사이의 내용을 보여주는 props
 
+### propTypes : 컴포넌트의 필수 props를 지정하거나 타입(page.101)을 지정
+
+#### propTypes 필수로 지정할 때 .isRequired
+
 자식 컴포넌트 예시코드)
 
 ```JS
-import React from 'react'；
+import React from 'react';
+import PropTypes from 'prop-types'；//propTypes를 사용하려면 import를 사용하여 불러와야 함
 const MyComponent = props => {
   return (
     <div>
@@ -285,6 +290,10 @@ const MyComponent = props => {
 }；
 MyComponent.defaultProps={
   name: '기본이름'
+};
+MyComponent.propTypes={
+  name:PropTypes.string //name값은 무조건 String(문자열) 형태로 전달해야함
+  //name을 필수로 지정하려면 name:PropTypes.string.isRequired
 };
 export default MyComponent；
 ```
@@ -347,7 +356,7 @@ const MyComponent = props => {
 
 ```js
 import React from 'react'；
-const MyComponent =({name, children})=>{ // ✔ 이 부분 주의
+const MyComponent =({name, children})=>{ // ✔ 이 부분 바뀜
   return (
     <div>
       안녕하세요, 제 이름은 {name}입니다. <br/>
@@ -356,3 +365,132 @@ const MyComponent =({name, children})=>{ // ✔ 이 부분 주의
   );
 }；
 ```
+
+### 클래스형 컴포넌트에서 props 사용하기
+
+- render 함수에서 this.props 조회
+- defaultProps와 propTypes는 동일
+
+```JS
+import React, {Component} from 'react';
+import PropTypes from 'prop-types'；
+
+class MyComponent extends Component{
+  render(){
+    const {name, children} = this.props; //비구조화 할당
+    return(
+      <div>
+      안녕하세요, 제 이름은 {name}입니다.<br/>
+      childern 값은 {children}입니다.
+      </div>
+    );
+  }
+}
+MyComponent.defaultProps={
+  name: '기본이름'
+};
+MyComponent.propTypes={
+  name:PropTypes.string.isRequired,
+  children:PropTypes.string
+};
+export default MyComponent；
+```
+
+### defaultProps 와 propTypes class내부에서 지정하기
+
+```js
+import React, {Component} from 'react';
+import PropTypes from 'prop-types'；
+
+class MyComponent extends Component{
+  static defaultProps={
+    name: '기본이름'
+  };
+  static propTypes={
+    name:PropTypes.string.isRequired,
+    children:PropTypes.string
+  };
+  render(){
+    const {name, children} = this.props; //비구조화 할당
+    return(...)
+  }
+}
+```
+
+## state
+
+- 컴포넌트 내부에서 바뀔 수 있는 값
+- ❕ props는 컴토넌트가 사용되는 과정에서 부모 컴포넌트가 설정하는 값 &rarr; props를 바꾸려면 부모 컴포넌트에서 바꿔줘야 함
+- 컴포넌트 자신은 해당 props를 읽기 전용으로만 사용할 수 있음
+
+### 리액트에서의 state
+
+- 클래스형 컴포너트가 지니는 state
+- 함수형 컴포넌트에서 useState라는 함수를 통해 사용하는 state
+
+✅ 클래스형 컴포넌트의 state
+
+- 컴포넌트에 state를 설정할 때는 constructor 메소드를 작성하여 설정
+
+```js
+constructor(props){
+  super(props); //클래스형 컴포넌트에서 constructor작성할 때 필수 호출
+  // 현재 클래스형 컴포넌트가 상속받고 있는 리액트의 Component 클래스가 지닌 생성자 함수를 호출해줌
+  this.state={
+    number:0 //state의 초깃값 설정, ✔ 컴포넌트의 state는 객체 형식
+  };
+}
+```
+
+- render함수에서 현재 state를 조회할 때는 this.state 조회
+
+```js
+render() {
+const {number} = this.state； // state를 조회할 때는 this.state로 조회
+return(
+  <div>
+      <h1>{number}</h1>
+      <button {/* onClick을 통해 버튼이 클릭되었을 때 호출할 함수 지정*/} onClick={()=>{
+          // this.setstate를 사용하여 state에 새로운 값을 넣을 수 있습니다. + 이 함수가 state값을 바꾸게 해줌
+          this.setState({number：number + 1 })；
+          }}>+1</button>
+  </div>
+)；
+}
+```
+
+⬆ 파일을 Counter.js라고 했다면 적용할 때 ⬇
+
+```js
+import React from "react";
+import Counter from "./Counter";
+
+const App = () => {
+  return <Counter />;
+};
+export default App;
+```
+
+### state를 constructor에서 꺼내기
+
+위에서는 state 초기값 지정을 위해 constructor 메소드를 선언함
+
+```js
+class Counter extends Component{
+  state={ //이게 위에서는 this.state 였음
+    number:0,
+    fixednumber:0
+  };
+  render(){
+    return(...)
+  }
+}
+```
+
+### this.setState에 객체 대신 함수 인자 전달하기
+
+- this.setState를 사용하여 state값을 업데이트할 때는 상태가 비동기적으로 업데이트 됨
+
+✅ this.setState를 사용할 때 객체 대신에 함수를 인자로 넣어주기
+
+113page 이어서
