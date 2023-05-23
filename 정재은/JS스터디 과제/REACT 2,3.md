@@ -234,3 +234,125 @@ function WhiteDog() {
 const whiteDog = new WhiteDog();
 whiteDog.bark(); // 결과 : 흰둥이 : 멍멍
 ```
+
+<hr>
+
+### 모듈 내보내기
+
+MyComponent 맨 아래에 작성  
+`export default MyComponent;` ➡ 다른 파일에서 이 파일을 import할 때, MyComponent 클래스를 불러오도록
+
+### 모듈 불러오기
+
+App 컴포넌트에서 위에서 작성한 MyComponent 컴포넌트를 불러오기
+
+```js
+import React from "react";
+import MyComponent from "./MyComponent"; //이게 불러오는 코드
+
+const App = () => {
+  return <MyComponent />;
+};
+
+export default App;
+```
+
+### props (properties)
+
+- 컴포넌트 속성을 설정할 때 사용하는 요소
+- props 값은 부모 컴포넌트(해당 컴포넌트를 불러와서 사용하는)에서 설정할 수 있음
+
+JSX내부에서 props 렌더링
+
+- props 값은 컴포넌트 함수의 파라미터로 받아와서 사용할 수 있음
+- props 값 JSX내부에서 { } 로 감싸기
+
+### defaultProps : props값을 지정하지 않았을 때 보여줄 기본값
+
+### children : 컴포넌트 태그 사이의 내용을 보여주는 props
+
+자식 컴포넌트 예시코드)
+
+```JS
+import React from 'react'；
+const MyComponent = props => {
+  return (
+    <div>
+      안녕하세요, 제 이름은 {props.name}입니다. <br/>
+      children 값은 {props.childeren}입니다.
+    </div>；
+  )
+}；
+MyComponent.defaultProps={
+  name: '기본이름'
+};
+export default MyComponent；
+```
+
+부모 컴포넌트 예시코드)
+
+```js
+import React from "react";
+import MyComponent from "./MyComponent";
+
+function App() {
+  //const App=()=>{}
+  return (
+    <div>
+      {/*자식한테 보내주는 props값*/}
+      <MyComponent name="React">리액트</MyComponent>
+      {/*여기서 MyComponent 태그 사이에 있는 '리액트' 가 children*/}
+    </div>
+  );
+}
+
+export default App;
+```
+
+### 비구조화 할당 문법 / 구조 분해 문법 을 통해 props 내부 값 추출하기
+
+- 비구조화 할당 : 객체에서 값을 추출하는 문법
+- 함수 파라미터 부분에서도 사용할 수 있음 ➡ 함수의 파라미터가 객체라면 그 값을 비구조화해서 사용
+
+기존코드) ❗ props.name / props.children 을 name과 children으로 바꾸기
+
+```js
+import React from 'react'；
+const MyComponent = props => {
+  return (
+    <div>
+      안녕하세요, 제 이름은 {props.name}입니다. <br/>
+      children 값은 {props.childeren}입니다.
+    </div>；
+  )
+}；
+```
+
+비구조화 할당 문법 사용한 코드 1)
+
+```js
+import React from 'react'；
+const MyComponent = props => {
+  const {name, children} = props;
+  return (
+    <div>
+      안녕하세요, 제 이름은 {name}입니다. <br/>
+      children 값은 {childeren}입니다.
+    </div>；
+  )
+}；
+```
+
+비구조화 할당 문법 사용한 코드 2)
+
+```js
+import React from 'react'；
+const MyComponent =({name, children})=>{ // ✔ 이 부분 주의
+  return (
+    <div>
+      안녕하세요, 제 이름은 {name}입니다. <br/>
+      children 값은 {childeren}입니다.
+    </div>；
+  );
+}；
+```
