@@ -198,9 +198,39 @@ class App extends Component{
 ➡ 임의 메서드를 정의할 수 있음  
 ➡ render 함수가 꼭 있어야 함 + render 함수 안에서 보여 주어야 할 JSX를 반환해야 함
 
-<hr>
-
 ### 🗨 화살표 함수
 
 <hr>
-화살표
+
+화살표 함수와 function 함수는 가르키는 this 값이 다름  
+예시1) function 함수
+
+```js
+function BlackDog() {
+  this.name = "흰둥이";
+  return {
+    name: "검둥이", //function 함수는 자신이 종속된 객체를 this로 가르킴
+    bark: function () {
+      console.lo(this.name + ":멍멍");
+    },
+  };
+}
+const blackDog = new BlackDog();
+blackDog.bark(); //결과 : 검둥이 : 멍멍
+```
+
+예시2) 화살표 함수
+
+```js
+function WhiteDog() {
+  this.name = "흰둥이"; //화살표 함수는 자신이 종속된 인스턴스를 가르킴
+  return {
+    name: "검둥이",
+    bark: () => {
+      console.log(this.name + ":멍멍");
+    },
+  };
+}
+const whiteDog = new WhiteDog();
+whiteDog.bark(); // 결과 : 흰둥이 : 멍멍
+```
