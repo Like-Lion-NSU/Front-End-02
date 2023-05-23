@@ -14,7 +14,7 @@ Ex.
 
 ### Fragment
 
-<div>대신 <Fragment>기능도 있음
+`<div>`대신 `<Fragment>`기능도 있음
 
 import React from 'react'; &rarr; react 모듈에 있는 Fragment 컴포넌트를 추가로 불러옴  
 `<><h1>리액트1</h1><h1>리액트2</h1></>` 형태도 가능
@@ -163,3 +163,44 @@ return(
 ```
 
 ## 컴포넌트
+
+<hr>
+
+### 컴포넌트를 선언하는 방식 - 함수형 컴포넌트, 클래스형 컴포넌트
+
+ex) 함수형 컴포넌트
+
+```js
+import React from "react"; //re
+
+function App() {
+  const name = "리액트";
+  return <div className="react">{name}</div>;
+}
+```
+
+함수형 컴포넌트의 단점  
+➡ state와 라이프사이클 API의 사용이 불가능 (Hooks 기능 도입으로 해결됨)  
+ex) 클래스형 컴포넌트
+
+```js
+import React, {Component} from 'react';
+
+class App extends Component{
+  render(){
+    const name='react';
+    return div className="react">{name}</div>;
+  }
+}
+```
+
+➡ 클래스형 컴포넌트의 경우 state 기능 및 라이프사이클 기능을 사용할 수 있음  
+➡ 임의 메서드를 정의할 수 있음  
+➡ render 함수가 꼭 있어야 함 + render 함수 안에서 보여 주어야 할 JSX를 반환해야 함
+
+<hr>
+
+### 🗨 화살표 함수
+
+<hr>
+화살표
