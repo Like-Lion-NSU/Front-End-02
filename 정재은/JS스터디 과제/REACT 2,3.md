@@ -570,4 +570,34 @@ export default Say；
 ✔ state값을 바꾸어야 할 때는 setState 혹은 useState를 통해 전달받은 Setter함수를 사용해야 함  
 ✅ 배열이나 객체를 업데이트해야 할 때
 
--
+1. 배열이나 객체 사본을 만들고 그 사본에 값을 업데이트
+2. 그 사본의 상태를 setState 혹은 Setter함수를 통해 업데이트
+
+✅Spread 연산자
+
+- 객체에 대한 사본을 만들 때 사용 : (...)을 사용하여 처리
+- 배열에 대한 사본을 만들 때 : 배열의 내장 함수들을 활용
+
+예제)
+
+```js
+// 객체 다루기
+const object = { a：1, b：2, c：3 }；
+const nextObject = {...object, b：5 }； // 사본을 만들어서 b값만 덮어 쓰기 a:1,b:5,c:3
+
+// 배열 다루기
+const array = [
+    { id：1, value：true },
+    { id：2, value：true },
+    { id：3, value：false }
+]；
+let nextArray = array.concat({ id：4 })； // 새 항목 추가
+nextArray.filter(item => item.id !== 2)； // id가 2인 항목 제거
+nextArray.map(item => (item.id === 1 ? { ...item, value： false } : item))； // id가 1인 값은 value를 false로 바꾸고 1이 아니라면 냅둬라
+```
+
+## 총정리
+
+✔ props는 부모 컴포넌트가 설정한다.  
+✔ state는 컴포넌트 자체적으로 지닌 값 - 컴포넌트 내부에서 값을 업데이트 할 수 있음  
+✔ 클래스형 컴포넌트의 state, 함수형 컴포넌트의 useState (useState권장)
