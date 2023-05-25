@@ -493,4 +493,81 @@ class Counter extends Component{
 
 ✅ this.setState를 사용할 때 객체 대신에 함수를 인자로 넣어주기
 
-113page 이어서
+```js
+this.setState((prevState, props) => {
+  //(기존상태,현재 지니고 있는 props=생략가능)
+  return {
+    //업데이트하고 싶은 내용
+  };
+});
+```
+
+화살표 함수에서 값을 바로 반환하고 싶을 때 &rarr; 코드블록 { } 생략 / pdf.114page  
+ex. ```const sum=(a,b)=>a,b;
+
+✅ this.setState가 끝난 후 특정 작업 실행하기  
+➡ 두 번재 파라미터로 콜백함수를 등록하기  
+ex.
+
+```js
+<button
+  onClick={() => {
+    this.setState({ number: number + 1 }, () => {
+      console.log("방금 setState가 호출되었습니다");
+    });
+  }}
+>
+  +1
+</button>
+```
+
+### 함수형 컴포넌트에서 useState 사용하기
+
+✅ 비구조화 할당 ex. array안에 있는 값을 one과 two에 담아주기  
+비구조화 할당 ❌ )
+
+```
+const arry=[1,2];
+const one=array[0];
+const two=array[1];
+```
+
+비구조화 할당 ⭕ )
+
+```
+const array=[1,2];
+const [one,two]=arry;
+```
+
+ex)
+
+```js
+import React, { useState } from 'react'；
+const Say =()=>{
+/*
+const a=useState(''); 함수 인자 : 상태의 초깃값, 객체 아니여도 됨 - 형태 자유
+const message=a[0]; 현재 상태
+const setMessage=a[1]; 상태를 바꾸어주는 함수 (Setter)세터 함수라고 부름
+*/
+const [message, setMessage] = useState('')；
+const onClickEnter = () => setMessage('안녕하세요!');
+const onClickLeave = () => setMessage('안녕히 가세요!');
+return (
+<div>
+    <button onClick={onClickEnter}>입장</button>
+    <button onClick={onClickLeave}>퇴장</butto>
+        <h1>{message}</h1>
+</div>
+);
+}；
+export default Say；
+```
+
+✔ useState는 한 컴토넌트에서 여러번 사용 가능 (pdf. 118page)
+
+### state를 사용할 때 주의사항
+
+✔ state값을 바꾸어야 할 때는 setState 혹은 useState를 통해 전달받은 Setter함수를 사용해야 함  
+✅ 배열이나 객체를 업데이트해야 할 때
+
+-
