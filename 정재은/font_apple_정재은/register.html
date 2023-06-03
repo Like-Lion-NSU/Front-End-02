@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5286d2d6db.js" crossorigin="anonymous"></script>
+    <link href="file\apple2.svg" rel="shortcut icon" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="container">
+        <ul>
+            <li class="item"><a href="#"><button class="button"><i class="fa-brands fa-apple"></i></button></a></li>
+            <li class="item"><a href="#"><button class="button">스토어</button></a></li>
+            <li class="item"><a href="#"><button class="button">Mac</button></a></li>
+            <li class="item"><a href="#"><button class="button">iPad</button></a></li>
+            <li class="item"><a href="#"><button class="button">iPhone</button></a></li>
+            <li class="item"><a href="#"><button class="button">Watch</button></a></li>
+            <li class="item"><a href="#"><button class="button">AirPods</button></a></li>
+            <li class="item"><a href="#"><button class="button">악세사리</button></a></li>
+            <li class="item"><a href="#"><button class="button">고객지원</button></a></li>
+            <li class="item"><a href="#"><button class="button"><i class="fa-solid fa-magnifying-glass"></i></button></a></li>
+        </ul>
+    </header>
+    <div id="regisheader">
+        <div class="left">Apple ID</div>
+    <div class="right">
+         <a href="#">로그인</a>
+         <a href="#">Apple ID 생성</a>
+        <a href="#">FAQ</a>
+    </div>
+    </div>
+    <Form action="http://localhost/method.php" method="post">
+        <input type="text" id="firstname" placeholder="성" required>
+        <input type="text" id="lastname" placeholder="이름" required> <br>
+        <select> 
+            <option value=“korea“>대한민국 +82</option> 
+            <option value=“US“>미국 +00</option> 
+        </select><br>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" placeholder="전화번호" required><br>
+        <input type="date" id="date" required><br>
+        <input type="email" id="email" placeholder="name@example.com" date="email" required><br>
+        <input type="password" id="password" placeholder="암호" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*?[#?!@$%^&*-])[A-Za-z\d$@$!%*#?&].{8,16}$" required><br>
+        번호 확인 방법 <label for="radio1"><input type="radio" name="radio" id="radio1" value="letter" required>문자 메시지</label>
+        <label for="radio2"><input type="radio" name="radio" id="radio2" value="voicd">음성 메시지</label><br>
+        <label for="checkbox1"><input type="checkbox" name="checkbox1" id="checkbox1" value="adv">광고수신동의</label><br>
+        <label for="checkbox2"><input type="checkbox" name="checkbox2" id="checkbox2" value="infor" required>개인정보수집동의</label><br>
+        <input type="submit" value="가입하기" id="join"></a>
+    </Form>
+    <footer>
+        <a href="main.html">이전페이지</a>
+    </footer>
+</body>
+</html>

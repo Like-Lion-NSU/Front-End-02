@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS과제_03</title>
+</head>
+
+<body>
+    <div id="board"></div>
+    <script>
+        const board = document.getElementById('board');
+        const table = document.createElement('table');
+        const result = document.createElement('div');
+        const cells = [];
+        const rows = [];
+        let gameOver = false;
+        let turn = 'O';
+
+        // 테이블 스타일 설정
+        table.style.fontSize = '50px';
+        table.style.fontWeight = 'bold';
+        table.style.textAlign = 'center';
+        table.style.borderCollapse = 'collapse';
+ 
+        // 무승부 확인 함수
+        function checkDraw() {
+            let isDraw = true;
+
+            for (let i = 0; i < cells.length; i++) {
+                for (let j = 0; j < cells[i].length; j++) {
+                    if (cells[i][j].textContent === '') {  // 만약 칸이 비어있다면
+                        isDraw = false; // 무승부가 아닌거지? 
+                        break; // 무승부 아니니까 반복문 나가라
+                    }
+                }
+                if (!isDraw) { //isDraw가 false일때 실행
+                    break;
+                }
+            }
+
+            return isDraw;
+        }
+
+        // 셀 클릭 시 동작하는 콜백 함수
+        const callback = function (event) {
+            if (gameOver) {
+                return;
+            }
+
+            let three = false; // 한 줄이 같은지 
+
+            const line = rows.indexOf(event.target.parentNode); // 몇 번째 줄인지 - 클릭된 칸의 부모, 즉 row를 가져와서 rows에서 해당 row를 찾음  
+            const room = cells[line].indexOf(event.target); // 몇 번째 칸인지  - 해당 줄에 해당하는 td들을 가져와서 클릭된 칸을 찾음
+
+            if (cells[line][room].textContent !== '') {
+                console.log('빈칸이 아닙니다.');
+                return;
+            }
+            
+            cells[line][room].textContent = turn;
+            console.log('빈칸입니다.');
+            
+
+            if (
+                // 가로줄 검사 - 같은 line(줄)에 td의 값을 0 1 2
+                cells[line][0].textContent === turn &&
+                cells[line][1].textContent === turn &&
+                cells[line][2].textContent === turn
+            ) {
+                three = true; // 승리 true
+            } else if (
+                // 세로줄 검사 - 같은 room td배열에 line을 0 1 2
+                cells[0][room].textContent === turn &&
+                cells[1][room].textContent === turn &&
+                cells[2][room].textContent === turn
+            ) {
+                three = true;
+            } else if (
+                // 대각선 검사 (1)
+                line - room === 0 && //[0,0],[1,1],[2,2]들은 빼면0임
+                cells[0][0].textContent === turn &&
+                cells[1][1].textContent === turn &&
+                cells[2][2].textContent === turn
+            ) {
+                three = true;
+            } else if (
+                // 대각선 검사 (2)
+                Math.abs(line - room) === 2 &&
+                cells[0][2].textContent === turn &&
+                cells[1][1].textContent === turn &&
+                cells[2][0].textContent === turn
+            ) {
+                three = true;
+            }
+
+            if (three) { //이겼다면
+                result.textContent = turn + '이 승리';
+                board.appendChild(result); //결과 출력을 board 안에 넣음
+                gameOver = true; // 승부가 났으니까 gameover
+                table.removeEventListener('click', callback); // gameover이니까 클릭 이벤트 리스너를 지움 -> 더이상 클릭 받으면 안되니까
+            } else if (checkDraw()) {
+                result.textContent = '무승부입니다';
+                board.appendChild(result);
+                gameOver = true; // 비겼어도 게임 끝내는건 동일
+                table.removeEventListener('click', callback);
+            } else { // 아직 게임이 진행중이니까 
+                turn = turn === 'O' ? 'X' : 'O';
+                //if(turn==='0') turn='x' else turn='o'
+            }
+        };
+        for (let i = 0; i < 3; i++) {
+            const row = document.createElement('tr');
+            rows.push(row);
+            cells.push([]); // 0:[] 1:[] 2:[]
+
+            for (let j = 0; j < 3; j++) {
+                const cell = document.createElement('td');
+                cell.addEventListener('click', callback);
+                cells[i].push(cell); // 0: [td,td,td] 1: [td,td,td] 2: [td,td,td]
+                cell.style.border = '1px solid black';
+                cell.style.width = '100px';
+                cell.style.height = '100px';
+
+                row.appendChild(cell); //cell (td)를 row(tr)의 자식으로
+            }
+            table.appendChild(row); //row(tr)을 table의 자식으로
+        }
+        board.appendChild(table); //table을 board의 자식으로
+
+    </script>
+<!--
+cell : td
+cells : td * 3
+row : tr
+rows : tr * 3
+line : 몇번째 줄
+room : 몇번째 칸
+-->
+</body>
+
+</html>

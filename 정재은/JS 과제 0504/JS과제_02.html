@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS과제_02</title>
+    <style>
+        div {
+            text-align: center;
+            height: 300px;
+        }
+ 
+        .blue {
+            background-color: aqua;
+        }
+
+        .red {
+            background-color: red;
+            color:white;
+        }
+
+        .green {
+            background-color: green;
+        }
+        #result{
+            text-align: left;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="blue" id="notice">클릭해서 시작하세요.</div>
+    <div id="result"></div>
+    
+    <script>
+        let greenTime, time, timer;
+        const div = document.querySelector("div");
+        const body = document.querySelector("body");
+        const result = document.getElementById("result");
+        const notice =document.querySelector("#notice");
+        const timeArray = [];
+        
+        const change =()=> {
+            clearInterval(timer); //타이머 제거
+            div.classList.remove('red');
+            div.classList.add('green');
+            greenTime=new Date(); //초록으로 바꼈을 당시의 시간을 저장
+            notice.innerText=`클릭하세요!`;
+        };
+        const onScreenClick =()=> {
+            if (div.classList.contains('blue')) {//만약 blue class가 div에 있다면 
+                div.classList.remove('blue'); //지워라
+                div.classList.add('red'); //그리고 red를 더해라
+                notice.innerText=`초록색이 되면 클릭하세요.`;
+                timer = setInterval(change, (Math.random() * 2000)+2000); //랜덤 시간이 지나면 change 함수를 호출
+            } else if (div.classList.contains('green')) { //초록일 때 클릭이 발생하면
+                clearInterval(timer);
+                time=new Date()-greenTime; //클릭이 발생했을 당시 시간 - 초록으로 바꼈을 때 시간
+                timeArray.push(time); //위에서 나온 time을 배열에 저장
+                const avg = timeArray.reduce((acc, cur) => acc + cur, 0) / timeArray.length; //timeArray에 저장된 값들로 평균구하기 reduce잘 이해안가긴함
+                result.innerText =`현재: ${time}ms, 평균:${avg}ms`;
+                div.classList.remove('green');
+                div.classList.add('blue');
+                notice.innerText=`클릭해서 시작하세요.`;
+            } else { // 빨간 화면일 때 클릭 발생
+                clearInterval(timer);
+                result.innerText =`현재: ${time}ms`;
+                div.classList.remove('red');
+                div.classList.add('blue');
+                notice.innerText=`너무 성급하시군요.`;
+            }
+        };
+        div.addEventListener('click',onScreenClick);
+    </script>
+</body>
+
+</html>

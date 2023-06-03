@@ -1,0 +1,240 @@
+html{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: Dotum,'돋움';
+    font-size: 14px;
+    background-color: #F5F6F7;
+    margin-top:50px;
+}
+label{
+    cursor: pointer;
+}
+header{
+    width: 240px;
+    height: 44px;
+    background-image: url("https://static.nid.naver.com/images/ui/join/m_naver_logo_20191126.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 240px auto;
+    margin:0 auto;
+}
+header a{
+    width: 240px;
+    height: 44px;
+    display: block;
+}
+section{
+    align-items: center;
+    margin-top:50px;
+}
+.id, .pass, .name, .email, .send{
+    width:460px;
+    height:51px;
+    padding:0px;
+    border:1px solid lightgray;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:5px;
+}
+.phnum{
+    width:340px;
+    height:51px;
+    padding:0px;
+    border:1px solid lightgray;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.idtext, .passtext, .nametext, .emailtext, .sendtext{
+    width:335px;
+    height:30px;
+    border:none;
+    margin-left: 10px;
+}
+.phonenum{
+    width:300px;
+    height:30px;
+    border:none;
+    margin-left: 10px;
+}
+
+.idtext:focus, .passtext:focus, .nametext:focus, .emailtext:focus,.phonenum:focus, .sendtext:focus{
+    outline: none;
+}
+.passtext{
+    margin-right:60px;
+}
+.rock{
+    background-image:url("https://static.nid.naver.com/images/ui/join/m_icon_pw_step.png");
+    width:24px;
+    height:24px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 120px auto;
+    margin-right:20px;
+}
+.rock2{
+    background-image:url("https://static.nid.naver.com/images/ui/join/m_icon_pw_step.png");
+    width:24px;
+    height:24px;
+    background-repeat: no-repeat;
+    background-position: -24px 0;
+    background-size: 120px auto;
+    margin-right:20px;
+}
+.naver{
+    color:lightgray;
+    margin-right:20px;
+}
+.birth, .date{
+    width:147px;
+    height:51px;
+    padding:0px;
+    border:1px solid lightgray;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.year, .day{
+    width:120px;
+    height:30px;
+    border:none;
+    margin-left: 10px;
+}
+.month{
+    width:147px;
+    height:51px;
+    margin:0px 8px;
+    border:1px solid lightgray;
+}
+select{
+    border:1px solid black;
+    height:52.33px;
+}
+.sex, .phone{
+    width:460px;
+    height:52.33px;
+    border:1px solid lightgray;
+}
+.numbutton{
+    width:115px;
+    height:51px;
+    background-color: #03c75a;
+    border:none;
+    color:white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.submit{
+    width:460px;
+    height: 54.33px;
+    background-color: #03c75a;
+    border:none;
+    color:white;
+    font-size:18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+section{
+    display: flex;
+    flex-direction: column;
+}
+.sex0, .phone1{
+    margin-top:5px;
+}
+.phone0{
+    margin-bottom:10px;
+    margin-top:20px;
+}
+.send{
+    background-color: #F5F6F7;
+}
+.send input{
+    background-color: #F5F6F7;
+}
+.numbutton{
+    font-size: 15px;
+    margin-left: 5px;
+}
+footer{
+    text-align: center;
+    margin-top:30px;
+}
+.footerText a{
+    border-right: 2px solid gray;
+    font-size:12px;
+    color: #7e7e7e;
+    text-decoration: none;
+    font-weight: lighter;
+    padding: 0px 10px;
+}
+footer a:hover{
+    color:#03c75a;
+    text-decoration: underline;
+}
+.sel{
+    color:#8e8e8e;
+    font-size:12px;
+    font-weight: lighter;
+}
+.name1{
+    margin-top:20px;
+}
+.id:focus{
+    border: 1px solid #03c75a;
+    outline:none;
+}
+select:focus{
+    border-color:#03c75a;
+    border-width: 1px;
+    outline:none;
+}
+.pass:focus-within, .name:focus-within, .birth:focus-within, .date:focus-within, .email:focus-within, .phnum:focus-within {
+    border: 1px solid #03c75a;
+} /* focus-within : 해당 요소 내부에 자식 요소가 포커스를 받을 때 부모 요소에 스타일을 적용*/
+
+
+.pass input:focus, .name input:focus, .birth input:focus, .date input:focus, .email input:focus, .phnum input:focus {
+    outline: none;
+}
+#birth{
+    display: flex;
+    align-items: center;
+    margin-top:5px;
+}
+#send{
+    display: flex;
+    align-items: center;
+}
+.smallLogo{
+    width: 63px;
+    height: 12px;
+    background-image: url("https://static.nid.naver.com/images/ui/join/m_naver_logo_20191126.png");
+    background-repeat: no-repeat;
+    background-position: 0 -25px;
+    background-size: 115px auto;
+    margin-right:10px;
+}
+.smallLogo a{
+    width: 63px;
+    height: 12px;
+    display: block;
+}
+.footerDown{
+    display: flex;
+    justify-content: center;
+}
+.copy{
+    font:9px Verdana;
+}
+.crop{
+    font:bold 9px Verdana;
+    color:black;
+    text-decoration: none;
+}
