@@ -128,4 +128,36 @@ Did : Did 접두사가 붙은 메서드는 어떤 작업을 작동한 후에 실
 ### 마운트, 업데이트, 언마운트
 
 ✅ 마운트 : DOM이 생성되고 웹 브라우저상에 나타나는 것  
-☑
+☑ 마운트할 때 호출하는 메서드  
+[컴포넌트 만들기]  
+⬇  
+[constructor] : 커모넌트를 새로 만들 때마다 호출되는 클래스 생성자 메서드
+⬇  
+[getDerivedStateFromProps] : props에 있는 값을 state에 넣을 때 사용하는 메서드  
+⬇  
+[render] : 준비한 UI를 렌더링하는 메서드  
+⬇  
+[componentDidMount] : 컴포넌트가 웹 브라우저상에 나타난 후 호출하는 메서드
+
+✅ 업데이트
+
+- 부모 컴포넌트에서 넘겨주는 props가 바뀔 때
+- state가 setState를 통해 업데이트될 때
+- 부모 컴포넌트가 리렌더링될 때 (props가 바뀌지 않아도, state가 바뀌지 않아도)
+- this.forceUpdate로 강제로 렌더링을 트리거할 때
+
+☑ 업데이트할 때 호출하는 메서드  
+[업데이트를 발생시키는 요인]  
+⬇  
+[getDerivedStateFromProps] : 마운트 과정에서 호출, props의 변화에 따라 state 값에도 변화를 주고 싶을 때 사용  
+⬇  
+[shouldComponentUpdate] : 컴포넌트 리렌더링 유무를 결정하는 메서드, 특정 함수에서 this.forceUpdate를 호출한다면 이 과정 생략 + render 호출  
+⬇ ➖ (shouldComponentUpdate가 ❌false를 반환하면 여기서 작업 중지/⭕true면 render 호출)  
+[render] : 컴포넌트 리렌더링  
+⬇  
+[getSnapshotBeforeUpdate] : 컴포넌트 변화를 DOM에 반영하기 직전 호출 메서드  
+⬇ ➖ 웹 브라우저상의 실제 DOM 변화  
+[componentDidUpdate] : 업데이트 작업 끝난 후 호출 메서드
+
+✅ 언마운트 : 컴포넌트를 DOM에서 제거하는 것  
+☑ componentWillUnmount : 컴포넌트가 웹 브라우저상에서 사라지기 전에 호출 메서드
