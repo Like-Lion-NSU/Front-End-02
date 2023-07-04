@@ -282,3 +282,165 @@ render(){
   )
 }
 ```
+
+# Hooks
+
+### Hooks란?
+
+- 함수형 컴포넌트에서도 useState(상태를 관리할 수 있게 도와주는), useEffect(렌더링 직후 작업을 설정하는) 등의 다양한 작업을 할 수 있게 도와주는 기능
+
+## useState
+
+- 함수형 컴포넌트에서도 가변적인 상태를 지닐 수 있게 해줌
+- 이 함수가 호출되면 배열을 반환  
+  첫번째 원소 : 상태 값 / 두번째 원소 : 상태를 설정하는 함수  
+  이 함수에 파라미터를 넣어서 호출하면 전달받은 파라미터로 값이 바뀌고 리렌더링됨
+- 하나의 상태 값만 관리할 수 있음 (=관리해야 할 상태가 여러개면 useState 여러 번 사용)
+
+## useEffect
+
+- 리액트 컴포넌트가 렌더링될 때마다 특정 작업을 수행하도록 설정할 수 있는 Hook
+- 클래스형 컴포넌트의 componentDidMount+componentDidUpdate
+
+```js
+useEffect(() => {
+  console.log("렌더링 완료");
+  console.log({
+    name,
+    nickname,
+  });
+});
+```
+
+### useEffect - 마운트 될 때만 실행
+
+```js
+useEffect(() => {
+  console.log("마운트될 때 실행/첫 렌더링");
+}, []);
+//useEffect에서 설정한 함수를 컴포넌트가 화면에 맨 처음 렌더링될 때(마운트될 때)만 실행하고 업데이트될 때는 실행하지 않으려면 두 번째 파라미터로 비어있는 배열 넣어주기
+```
+
+### useEffect - 특정 값이 업데이트(변경)될 때만 실행
+
+```js
+useEffect(() => {
+  console.log(name);
+}, [name]); //배열안에 검사하고 싶은 값 넣어주기
+```
+
+### useEffect - cleanup (뒷정리)
+
+- useEffect는 렌더링되고 난 직후마다 실행되는 것이 기본값 But 컴포넌트가 언마운트되기 전이나 업데이트되기 직전에 어떠한 작업을 수행하기 위해 사용하는 것이 뒷정리 함수 반환
+- 뒷정리 함수가 호출될 때는 업데이트되기 직전의 값을 보여줌
+- 언마운트될 때만 뒷정리 함수를 호출하고 싶다면 useEffect 함수의 두 번째 파라미터에 빈 배열 넣기
+
+```js
+useEffect(() => {
+  console.log("effect"); //나타날 때
+  console.log(name);
+  return () => {
+    console.log("cleanup"); //사라질 때
+    console.log(name);
+  };
+}, [name]);
+```
+
+## useReducer
+
+- 더 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 업데이트해 주고 싶을 때 사용
+- 현재 상태, 업데이트를 위해 필요한 정보를 담은 action값을 전달받아 새로운 상태를 반환하는 함수
+- 컴포넌트 업데이트 로직을 컴포넌트 바깥으로 빼낼 수 있음 (장점)
+- useReduver에서 사용하는 액션 객체는 ‼ 반드시 type을 지니고 있을 필요 없음❌, 객체 뿐 아니라 문자열 숫자도 가능⭕
+- 리듀서 함수에서 새로운 상태를 만들 때는 ‼ 반드시 불변성을 지켜주여야 함
+
+```js
+function reducer(state,action){
+  return {...}; //불변성을 지키면서 업데이트한 새로운 상태를 반환
+}
+```
+
+action값 ex.
+
+```js
+{type:'INCREMENT', /*그 외 추가 값들*/}
+```
+
+```js
+const Counter = () => {
+  const [state, dispatch] = useReducer(reducer, { value: 0 });
+  //리듀서의 첫 번째 파라미터에는 리듀서 함수, 두 번째 파라미터에는 해당 리듀서의 기본값
+  // ->이 Hook을 사용하여 state(현재 가르키고 있는 상태)와
+  // dispatch함수(액션을 발생시키는 함수)를 받아옴
+  return (
+    <div>
+      <p>현재 카운터 값은 {state.value} </p>
+      <button onClick={() => dispatch({ type: "INCREMENT" })}>+1</button>
+      <button onClick={() => dispatch({ type: "DECREMENT" })}>-1</button>
+    </div>
+  );
+};
+```
+
+### useReducer - 인풋 상태 관리하기
+
+```js
+function reducer(state, action) {
+  return {
+    ...state,
+    [action.name]: action.value,
+  };
+}
+const Info = () => {
+  const [state, dispatch] = useReducer(reducer, {
+    name: "",
+    nickname: "",
+  });
+  const { name, nickname } = state;
+  const onChange = (e) => {
+    dispatch(e.target);
+  };
+};
+```
+
+## useMemo
+
+- 함수형 컴포넌트 내부에서 발생하는 연산을 최적화할 수 있게 해줌
+
+useMemo의 사용  
+useMemo를 사용하지 않고 리스트에 숫자를 추가하여 그 평균을 보여주는 컴포넌트를 작성한다고 한다면, (예제 pdf208page) 단순히 인풋 내용이 수정될 때도 평균을 구하는 함수가 호출됨.  
+useMemo를 통하 ❗렌더링하는 과정에서 특정 값이 바뀌었을 때만 연산을 실행하고, 원하는 값이 바뀌지 않았다면 이 전 연산 과정을 '다시 사용'하는 것이 가능❗
+
+## useCallback
+
+- 렌더링 성능을 최적화해야 하는 상황에서 사용
+- useCallback 사용 시 만들어 놨던 함수를 재사용할 수 있음
+
+```js
+const Average = () => {
+  const [list, setList] = useState({});
+  const [number, setNumber] = useState("");
+  //callback 사용 전에는 const onChange=e=>{}
+  const onChange = useCallback((e) => {
+    //첫 번째 파라미터 : 생성하고 싶은 함수
+    setNumber(e.target.value);
+    //두 번째 파라미터 : 어떤 값이 바뀌었을 때 함수를 새로 생성해야 하는지 명시하는 '배열'
+  }, []); //컴포넌트가 처음 렌더링될 때만 함수 생성
+
+  const onInsert = useCallback(() => {
+    const nextList = list.concat(parseInt(number));
+    setList(nextList);
+    setNumber("");
+  }, [number, list]); //number 혹은 list가 바뀌었을 때만 함수 생성
+};
+```
+
+- 함수 내부에서 상태 값에 의존해야 할 때는 그 값을 ❗ 반드시 두 번째 파라미터 안에 포함시켜야함  
+  &rarr; 예제에서 onInsert는 기존의 number와 list를 조회해서 nextList를 생성함 ➡ 배열 안에 반드시 number와 list가 들어있어야 함
+
+## useRef(214pgage)
+
+- 함수형 컴포넌트에서 ref를 쉽게 사용할 수 있게 해줌
+- useRef를 사용하여 ref를 설정하면 useRef를 통해 만든 객체 안의 current값이 실제 엘리먼트를 가르킴
+- 로컬 변수(렌더링과 상관없이 바뀔 수 있는 값)를 사용해야 할 때 활용
+- 🛑렌더링과 관련되지 않은 값을 관리할 때만 사용해야함. ref안의 값이 바뀌어도 컴포넌트가 렌더링되지 않음
