@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    
+    function App(){
+        const [counter,setCounter]=React.useState(0) //초기값 0 , const[담으려는 데이터, 변경시킬 때 사용]
+        const onClick=()=>{
+            //setCounter(counter+1) //setCounter이 자동으로 리렌더링을 도와줌
+            setCounter((current)=>current+1); //current가 현재 값이라는 것을 보장해줌
+        }
+        return(  
+        <div>
+            <h3>Total Clicks:{counter}</h3>
+            <button onClick={onClick}>Click me</button>
+        </div>
+        );
+    }
+    ReactDOM.render(<App/>, root);
+</script>
+
+</html>
