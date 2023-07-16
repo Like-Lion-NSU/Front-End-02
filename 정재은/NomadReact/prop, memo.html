@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    function Btn({btnName, big, btnClick}){
+        //props:첫 번째이자 유일한 인자. Object
+        return (<button
+            onClick={btnClick} 
+            style={{
+                backgroundColor:"tomato",
+                color:"white",
+                padding:"10px 20px",
+                border:0,
+                borderRadius:10,
+                fontSize: big ? 18 : 15
+            }}
+            >{btnName} 
+        </button>
+        );
+    }
+    const MemorizedBtn=React.memo(Btn)
+    //memo: 부모 state에 변화가 있다면 모든 자식들은 리렌더링됨
+    //memo를 사용하면 prop가 변경되는 자식만 리렌더링 되도록 해줌
+    //memo 사용 전에는 <Btn btnName={value} ... 이었음
+    function App() {
+        const [value, setValue] = React.useState("Save Changes")
+        const changeValue = () => setValue("Revert Changes")
+        return (
+            <div> 
+                <MemorizedBtn btnName={value} big={true} /*JS표현식 전달*/ btnClick={changeValue}/>
+                <MemorizedBtn btnName="Continue" big={false}/>
+            </div>
+        );
+    }
+    ReactDOM.render(<App />, root);
+</script>
+
+</html>

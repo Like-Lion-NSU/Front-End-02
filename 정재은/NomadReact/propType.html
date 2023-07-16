@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    function Btn({btnName, big=true /*기본값 지정*/, btnClick}){
+        return (<button
+            onClick={btnClick} 
+            style={{
+                backgroundColor:"tomato",
+                color:"white",
+                padding:"10px 20px",
+                border:0,
+                borderRadius:10,
+                fontSize: big ? 18 : 15
+            }}
+            >{btnName} 
+        </button>
+        );
+    }
+    //propType : 어떤 type의 prop을 받고 있는지 체크해줌
+    Btn.propTypes={
+        btnName: PropTypes.string,
+        big: PropTypes.bool.isRequired //반드시 필요하다
+    };
+    function App() {
+        const [value, setValue] = React.useState("Save Changes")
+        const changeValue = () => setValue("Revert Changes")
+        return (
+            <div> 
+                <Btn btnName={value} /*JS표현식 전달*/ btnClick={changeValue}/>
+                <Btn btnName="Continue" big={false}/>
+            </div>
+        );
+    }
+    ReactDOM.render(<App />, root);
+</script>
+
+</html>
